@@ -3,6 +3,7 @@
 import { Profiler } from 'inspector'
 import { CoverageMapData } from 'istanbul-lib-coverage'
 import { SourceMapInput } from '@jridgewell/trace-mapping'
+import CovSource from './lib/source'
 
 declare type Sources =
   | {
@@ -20,6 +21,6 @@ declare class V8ToIstanbul {
   toIstanbul(): CoverageMapData
 }
 
-declare function v8ToIstanbul(scriptPath: string, wrapperLength?: number, sources?: Sources, excludePath?: (path: string) => boolean): V8ToIstanbul
+declare function v8ToIstanbul(scriptPath: string, wrapperLength?: number, sources?: Sources, excludePath?: (path: string) => boolean, customPlugin?: (source: CovSource, path: string) => void): V8ToIstanbul
 
 export = v8ToIstanbul
